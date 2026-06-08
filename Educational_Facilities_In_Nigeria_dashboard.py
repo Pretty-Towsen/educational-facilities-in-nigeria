@@ -55,7 +55,7 @@ def display_metrics(filtered_df):
 
     with col2:
         total_students = filtered_df['Total_Students'].sum() if len(filtered_df) > 0 else 0
-        st.metric("👨‍👩‍👧‍👦 	Total Students", f"{total_students}")
+        st.metric("👨‍👩‍👧‍👦 	Total Students", f"{(total_students):,.2f}")
 
     with col3:
         avg_students = filtered_df['Total_Number_students'].mean() if len(filtered_df) > 0 else 0
