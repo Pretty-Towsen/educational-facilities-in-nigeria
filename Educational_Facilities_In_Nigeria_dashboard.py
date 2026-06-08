@@ -14,7 +14,7 @@ st.set_page_config(
 @st.cache_data
 def load_data():
     try:
-        df = pd.read_csv("data/educational-facilities-in-nigeria_cleaned_data.csv")
+        df = pd.read_csv('data/educational-facilities-in-nigeria_cleaned_data.csv')
         return df
     except FileNotFoundError as e:
         st.warning(f"An error occured: {e}")
@@ -51,10 +51,11 @@ def display_metrics(filtered_df):
     col1, col2, col3, col4, col5 = st.columns(5)
 
     with col1:
-        st.metric("🏨 Total school", f"{len(filtered_df):,.2f}")
+        st.metric("🏨 Total school", f"{len(filtered_df):,}")
 
     with col2:
-        st.metric("👨‍👩‍👧‍👦 	Total Students", f"{len(filtered_df):,.2f}")
+        total_students = filtered_df['Total_Students'].sum() if len(filtered_df) > 0 else 0
+        st.metric("👨‍👩‍👧‍👦 	Total Students", f"{total_students}")
 
     with col3:
         avg_students = filtered_df['Total_Number_students'].mean() if len(filtered_df) > 0 else 0
